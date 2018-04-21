@@ -1,4 +1,4 @@
-
+$( document ).ready(function() {
 
   // Initialize Firebase
   var config = {
@@ -13,7 +13,52 @@
 
   var database = firebase.database();
 
+    var name = "";
+    var role = "";
+    var startDate = "";
+    var rate = 0;
 
-  database.ref().on("value", function(snapshot) {
-      console.log(snapshot.val());
-  });git
+
+database.ref().on("value", function(snapshot) {
+    console.log(snapshot.val());
+
+
+    name = snapshot.val().name;
+    role = snapshot.val().role;
+    startDate = snapshot.val().startDate;
+    rate = snapshot.val().rate;
+
+    $("#user-name").append(snapshot.val().name);
+    $("#user-role").append(snapshot.val().role);
+    $("#user-startdate").append(snapshot.val().startDate);
+    $("#user-rate").append(snapshot.val().rate);
+
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+});
+
+$("#submit").on("click", function(event) {
+    event.preventDefault();
+
+    var userName = $("#user-name").val().trim();
+    var userRole = $("#user-role").val().trim();
+    var userStartDate = $("#user-startdate").val().trim();
+    var userRate = $("#user-rate").val().trim();
+    $("#new-name").append(userName);
+    $("#new-role").append(userRole);
+    $("#new-startdate").append(userStartDate);
+    $("#new-monthlyrate").append(userRate);
+    console.log(userName);
+    console.log(userRole);
+    console.log(userStartDate);
+    console.log(userRate);
+// database.ref().set({
+    database.ref().push({
+        name: userName,
+        role: userRole,
+        startDate: userStartDate,
+        rate: userRate,
+        });
+            
+    });
+});
