@@ -19,29 +19,29 @@
     var rate = 0;
 
 
-  database.ref().on("value", function(snapshot) {
-      console.log(snapshot.val());
+//   database.ref().on("value", function(snapshot) {
+//       console.log(snapshot.val());
 
 
-    name = snapshot.val().name;
-    role = snapshot.val().role;
-    startDate = snapshot.val().startDate;
-    rate = snapshot.val().rate;
+//     name = snapshot.val().name;
+//     role = snapshot.val().role;
+//     startDate = snapshot.val().startDate;
+//     rate = snapshot.val().rate;
     
-    // database.ref().set({
-    database.ref().push({
-        name: name,
-        role: role,
-        startDate: startDate,
-        rate: rate,
-        });
+//     // database.ref().set({
+//     database.ref().push({
+//         name: name,
+//         role: role,
+//         startDate: startDate,
+//         rate: rate,
+//         });
 
 
 
-    $("#user-name").text(snapshot.val().name);
-    $("#user-role").text(snapshot.val().role);
-    $("#user-startdate").text(snapshot.val().startDate);
-    $("#user-rate").text(snapshot.val().rate);
+    // $("#user-name").text(snapshot.val().name);
+    // $("#user-role").text(snapshot.val().role);
+    // $("#user-startdate").text(snapshot.val().startDate);
+    // $("#user-rate").text(snapshot.val().rate);
 
     $("#submit").on("click", function(event) {
         event.preventDefault();
@@ -50,11 +50,15 @@
         var userRole = $("#user-role").val().trim();
         var userStartDate = $("#user-startdate").val().trim();
         var userRate = $("#user-rate").val().trim();
-        $("#user-name").text(userName);
-        $("#user-role").text(userRole);
-        $("#user-startdate").text(userStartDate);
-        $("#user-rate").text(userRate);
+        $("#new-name").append(userName);
+        $("#new-role").append(userRole);
+        $("#new-startdate").append(userStartDate);
+        $("#new-monthlyrate").append(userRate);
+        console.log(userName);
+        console.log(userRole);
+        console.log(userStartDate);
+        console.log(userRate);
     });
-    }, function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
-    });
+    // }, function(errorObject) {
+    //     console.log("The read failed: " + errorObject.code);
+    // });
