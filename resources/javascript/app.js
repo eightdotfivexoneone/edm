@@ -21,4 +21,25 @@
 
   database.ref().on("value", function(snapshot) {
       console.log(snapshot.val());
-  });
+
+
+    name = snapshot.val().name;
+    role = snapshot.val().role;
+    startDate = snapshot.val().startDate;
+    rate = snapshot.val().rate;
+    
+    database.ref().set({
+        name: name,
+        role: role,
+        startDate: startDate,
+        rate: rate,
+        });
+
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+      
+    $("#user-name").text(snapshot.val().name);
+    $("#user-role").text(snapshot.val().role);
+    $("#user-startdate").text(snapshot.val().startDate);
+    $("#user-rate").text(snapshot.val().rate);
