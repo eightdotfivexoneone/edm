@@ -13,7 +13,12 @@
 
   var database = firebase.database();
 
+    var name = "";
+    var role = "";
+    var startDate = "";
+    var rate = 0;
+
 
   database.ref().on("value", function(snapshot) {
       console.log(snapshot.val());
-  });git
+  });
