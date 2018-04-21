@@ -6,14 +6,40 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="resources/css/style.css" />
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <!-- jQuery -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+   <!-- Bootstrap CDN-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
 
 
 </head>
 <body>
     <div>
-        hi
+            <div class="container">
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name">Employee Name</label>
+                            <input type="text" class="form-control" id="user-name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-role">Role</label>
+                            <input type="text" class="form-control" id="user-role" placeholder="Role">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-startdate">Start Date (DD/MM/YY)</label>
+                            <input type="text" class="form-control" id="user-startdate" placeholder="Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-rate">Monthly Rate</label>
+                            <input type="text" class="form-control" id="user-rate" placeholder="Rate">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
     </div>
     <script src="resources/javascript/app.js"></script>
 </body>

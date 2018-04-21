@@ -28,18 +28,33 @@
     startDate = snapshot.val().startDate;
     rate = snapshot.val().rate;
     
-    database.ref().set({
+    // database.ref().set({
+    database.ref().push({
         name: name,
         role: role,
         startDate: startDate,
         rate: rate,
         });
 
-    }, function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
-      });
-      
+
+
     $("#user-name").text(snapshot.val().name);
     $("#user-role").text(snapshot.val().role);
     $("#user-startdate").text(snapshot.val().startDate);
     $("#user-rate").text(snapshot.val().rate);
+
+    $("#submit").on("click", function(event) {
+        event.preventDefault();
+
+        var userName = $("#user-name").val().trim();
+        var userRole = $("#user-role").val().trim();
+        var userStartDate = $("#user-startdate").val().trim();
+        var userRate = $("#user-rate").val().trim();
+        $("#user-name").text(userName);
+        $("#user-role").text(userRole);
+        $("#user-startdate").text(userStartDate);
+        $("#user-rate").text(userRate);
+    });
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
